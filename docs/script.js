@@ -69,25 +69,35 @@ function reset() {
 
     d.dataset.size = i;
     d.draggable = true;
-
     // Desktop
-    d.addEventListener("dragstart", () => (dragged = d));
-    d.addEventListener("click", () => (selected = d));
-
-    // Mobile touch support
-    d.addEventListener("touchstart", () => {
+    d.addEventListener("dragstart", () => {
+      if (d.parentElement.lastElementChild !== d) return; // only top disk
       dragged = d;
+    });
+
+    d.addEventListener("click", () => {
+      if (d.parentElement.lastElementChild !== d) return; // only top disk
       selected = d;
+    });
+    // Mobile
+    d.addEventListener("touchstart", e => {
+        if (d.parentElement.lastElementChild !== d) return; // only top disk
+        dragged = d;
+        selected = d;
+        e.preventDefault();
     });
 
     d.addEventListener("touchmove", e => {
+      if (dragged !== d) return;   // move only the selected disk
       e.preventDefault();
       const t = e.touches[0];
       d.style.position = "fixed";
       d.style.left = t.clientX - d.offsetWidth / 2 + "px";
       d.style.top = t.clientY - d.offsetHeight / 2 + "px";
       d.style.zIndex = 1000;
-    });
+  });
+          
+
 
     d.addEventListener("touchend", e => {
       const t = e.changedTouches[0];
@@ -208,3 +218,4 @@ document.getElementById("toggleLog").onclick = () => {
 };
 
 reset();
+
