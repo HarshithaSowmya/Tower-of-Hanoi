@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tower of Hanoi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<!-- Result Overlay -->
+<div class="overlay hidden" id="overlay">
+  <div class="resultBox" id="resultBox"></div>
+</div>
+<body>
+
+  <div class="neon-bg"></div>
+
+  <h1 class="title">Tower of Hanoi</h1>
+
+  <p class="subtitle">
+    Tower of Hanoi is a logic game where players move disks from.<br>
+    <b>Rules:</b> Move only one disk at a time and never place a larger disk on a smaller one.
+  </p>
+
+  <div class="panel">
+    <div class="controls">
+      <span>Disks:</span>
+      <button id="dec">▼</button>
+      <span id="diskCount">3</span>
+      <button id="inc">▲</button>
+
+      <span class="moves">Moves: <span id="moves">0</span></span>
+
+      <button id="restart">Restart</button>
+      <button id="solve">Solve!</button>
+      <button id="toggleLog">Log</button>
+    </div>
+
+    <div class="board">
+  <div class="tower-wrap">
+    <div class="tower" data-id="0"></div>
+    <span>Source</span>
+  </div>
+  <div class="tower-wrap">
+    <div class="tower" data-id="1"></div>
+    <span>Auxiliary</span>
+  </div>
+  <div class="tower-wrap">
+    <div class="tower" data-id="2"></div>
+    <span>Destination</span>
+  </div>
+</div>
+
+    <div class="footer">
+      Minimum Moves: <span id="minMoves">7</span>
+    </div>
+
+    <div class="logBox hidden" id="logBox">
+      <textarea placeholder="Write your notes or strategy here..."></textarea>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
